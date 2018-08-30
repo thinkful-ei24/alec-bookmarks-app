@@ -1,4 +1,9 @@
 const store = (function(){
+
+  const setError = function(error) {
+    this.error = error;
+  };
+
   const addBook = function(book) {
     this.bookmarks.push(book);
   };
@@ -33,7 +38,8 @@ const store = (function(){
     findAndChangeExpand,
     findAndDelete,
     setRatingFilter,
-    RatingFilter: ''
+    RatingFilter: '',
+    setError
   };
 
 }());

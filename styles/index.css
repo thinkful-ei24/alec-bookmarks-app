@@ -50,6 +50,6 @@ button:hover {
   text-decoration: line-through;
 }
 
-#error-message-display {
+.error-container {
   color: red;
 }

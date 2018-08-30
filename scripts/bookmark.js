@@ -1,4 +1,19 @@
 const bookMarkList = (function(){
+  function generateError(err) {
+  let message = '';
+  if (err.responseJSON && err.responseJSON.message) {
+    message = err.responseJSON.message;
+  } else {
+    message = `${err.code} Server Error`;
+  }
+
+  return `
+    <section class="error-content">
+      <button id="cancel-error">X</button>
+      <p>${message}</p>
+    </section>
+  `;
+}
 
   function generateItemElement(item) {
     console.log('generateItemElement is firing');
@@ -36,13 +51,16 @@ const bookMarkList = (function(){
   }
 
   function render() {
-    // Filter item list if store prop is true by item.checked === false
+    if (store.error) {
+      const el = generateError(store.error);
+      $('.error-container').html(el);
+    } else {
+      $('.error-container').empty();
+    }
     let items = store.bookmarks;
-    //give each item a collapsible value
     for(let item of items){
       if(!item.expanded){
         item.expanded = false;
-            console.log('this is  the expanded property: '+ item.expanded);
       }
     }
     let theRating = parseInt(store.RatingFilter);
@@ -74,7 +92,13 @@ const bookMarkList = (function(){
       Api.createBook(newItemObj, (newItem)=>{
         store.addBook(newItem);
         render();
-      });
+      },
+      (err) => {
+          console.log(err);
+          store.setError(err);
+          render();
+        }
+    );
     });
   }
 
@@ -126,14 +150,18 @@ const bookMarkList = (function(){
       Api.deleteBook(id, () => {
         store.findAndDelete(id);
         render();
-      }, errorCallback);
+      },   (err) => {
+            console.log(err);
+            store.setError(err);
+            render();
+          });
     });
   }
 
-  function errorCallback(message){
-    console.log(message);
-    $('#error-message-display').html(message.responseJSON.message);
-  }
+  // function errorCallback(message){
+  //   console.log(message);
+  //   $('#error-message-display').html(message.responseJSON.message);
+  // }
 
   function handleEditShoppingItemSubmit() {
     $('.js-shopping-list').on('submit', '.js-edit-item', event => {
@@ -154,13 +182,13 @@ const bookMarkList = (function(){
     });
   }
 
-  function handleShoppingListSearch() {
-    $('.js-shopping-list-search-entry').on('keyup', event => {
-      const val = $(event.currentTarget).val();
-      store.setSearchTerm(val);
-      render();
-    });
-  }
+
+  function handleCloseError() {
+   $('.error-container').on('click', '#cancel-error', () => {
+     store.setError(null);
+     render();
+   });
+ }
 
   function bindEventListeners() {
     handleNewItemSubmit();
@@ -168,8 +196,8 @@ const bookMarkList = (function(){
     handleDeleteItemClicked();
     handleEditShoppingItemSubmit();
     handleToggleFilterClick();
-    handleShoppingListSearch();
     handleRatingFilterForm();
+    handleCloseError();
   }
 
   // This object contains the only exposed methods from this module:
