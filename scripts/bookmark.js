@@ -39,8 +39,12 @@ const bookMarkList = (function(){
     // Filter item list if store prop is true by item.checked === false
     let items = store.bookmarks;
     //give each item a collapsible value
-    console.log('below should be the items with the expanded feature');
-    console.log(items);
+    for(let item of items){
+      if(!item.expanded){
+        item.expanded = false;
+            console.log('this is  the expanded property: '+ item.expanded);
+      }
+    }
     let theRating = parseInt(store.RatingFilter);
     let ratingFiltered;
     if(store.RatingFilter.length > 0){
@@ -91,7 +95,7 @@ const bookMarkList = (function(){
       .data('item-id');
   }
 
-  function handleItemCheckClicked() {
+  function handleItemExpandClicked() {
     console.log('handleItemCheckClicked is rendering');
     $(".js-bookmarks-list").on('click', '.js-item-element', event => {
       console.log("the item has been clicked");
@@ -103,9 +107,11 @@ const bookMarkList = (function(){
       let toPass;
       if(expandedVal === true){
         toPass === false;
+      } else {
+        toPass === true;
       }
 
-      console.log('this is the expandedVal ' + item.expanded);
+      console.log('this is the toPass ' + toPass);
 
       // item.checked = !item.checked;
         store.findAndChangeExpand(id, toPass);
@@ -158,7 +164,7 @@ const bookMarkList = (function(){
 
   function bindEventListeners() {
     handleNewItemSubmit();
-    handleItemCheckClicked();
+    handleItemExpandClicked();
     handleDeleteItemClicked();
     handleEditShoppingItemSubmit();
     handleToggleFilterClick();

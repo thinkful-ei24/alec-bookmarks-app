@@ -7,9 +7,12 @@ const store = (function(){
     return this.bookmarks.find(item => item.id === id);
   };
 
-  const findAndChangeExpand = function(id, val){
+  const findAndChangeExpand = function(id){
     let currentItem = this.bookmarks.find(item => item.id === id);
-    currentItem.expanded = val;
+    console.log("this is currentItem.expanded before: " + currentItem.expanded);
+
+    currentItem.expanded = !currentItem.expanded;
+    console.log("this is currentItem.expanded after: " + currentItem.expanded);
   };
 
   const findAndDelete = function(id) {
