@@ -41,11 +41,16 @@ const bookMarkList = (function(){
     //give each item a collapsible value
     console.log('below should be the items with the expanded feature');
     console.log(items);
-
-    ratingFiltered = store.bookmarks.filter(bookmark => bookmark.rating > store.RatingFilter);
+    let theRating = parseInt(store.RatingFilter);
+    let ratingFiltered;
+    if(store.RatingFilter.length > 0){
+     ratingFiltered=store.bookmarks.filter(item => parseInt(item.rating) > theRating -1);
+  } else {
+     ratingFiltered=store.bookmarks;
+  }
     // render the shopping list in the DOM
     console.log('`render` ran');
-    const bookMarkListItemsString = generateBookMarksItemsString(items);
+    const bookMarkListItemsString = generateBookMarksItemsString(ratingFiltered);
     $('.js-bookmarks-list').html(bookMarkListItemsString);
   }
 
@@ -71,7 +76,12 @@ const bookMarkList = (function(){
 
   function handleRatingFilterForm(){
     $('#rating-filter-form').submit(function (event) {
+      event.preventDefault();
       let filter = $('.rating-filter').val();
+      console.log('this is the filter we are putting in ' + filter);
+      store.setRatingFilter(filter);
+      console.log('this is the stores rating filter ' + filter);
+      render();
     });
   }
 
@@ -153,6 +163,7 @@ const bookMarkList = (function(){
     handleEditShoppingItemSubmit();
     handleToggleFilterClick();
     handleShoppingListSearch();
+    handleRatingFilterForm();
   }
 
   // This object contains the only exposed methods from this module:

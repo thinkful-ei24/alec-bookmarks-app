@@ -30,7 +30,7 @@ const store = (function(){
     findAndChangeExpand,
     findAndDelete,
     setRatingFilter,
-    RatingFilter: 1
+    RatingFilter: ''
   };
 
 }());
