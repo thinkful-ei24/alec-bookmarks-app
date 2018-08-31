@@ -25,7 +25,7 @@ const bookMarkList = (function(){
     let itemExpanded = '';
     if (item.expanded === true) {
       itemExpanded += `
-        <div>
+        <div class="delete-wrapper">
         <p class="description">${item.desc}</p>
         <a href="${item.url}" class="link">Visit</a>
         <button id="button" class="shopping-item-delete js-item-delete">
