@@ -17,26 +17,30 @@ const bookMarkList = (function(){
 
   function generateItemElement(item) {
     console.log('generateItemElement is firing');
+    let itemStars = '';
+    for(let i = 0; i < item.rating; i++){
+      itemStars += '<i class="fa fa-star"></i>';
+    }
     let itemTitle = `<span class="shopping-item shopping-item__checked">${item.title}</span>`;
     let itemExpanded = '';
     if (item.expanded === true) {
       itemExpanded += `
         <div>
         <p class="description">${item.desc}</p>
-        <a class="link" href="${item.url}">link</a>
+        <a href="${item.url}">Visit</a>
+        <button id="button" class="shopping-item-delete js-item-delete">
+        delete
+        </button>
         </div>
       `;
     }
 
     return `
       <li class="js-item-element" data-item-id="${item.id}">
-      <div class="top-wrapper" style="border:1px solid red">
-        ${item.title}
+      <div class="top-wrapper">
+        ${item.title} ${itemStars}
         <div class="shopping-item-controls">
           <div>${itemExpanded}</div>
-          <button class="shopping-item-delete js-item-delete">
-            <span class="button-label">delete</span>
-          </button>
         </div>
       </div>
       </li>`;

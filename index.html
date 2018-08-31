@@ -4,30 +4,33 @@
 <head>
   <title>Shopping List</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="styles/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Kosugi+Maru|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
   <div class="container">
-    <h1>Shopping List</h1>
+    <h1>Bookmarks</h1>
     <div class="error-container"></div>
+    <section class="form-wrapper">
+      <h3>Add</h3>
     <form id="js-bookmarks-form">
-      <label for="shopping-list-entry">Add an item</label>
-      <input type="text" name="title-input" class="title-input" placeholder="e.g., broccoli">
-      <input type="text" name="url-input" class="url-input" placeholder="https://www.website.com">
-      <textarea rows="2" cols="50" name="desc-input" class="desc-input">
+      <input type="text" name="title-input" class="title-input input" placeholder="e.g., broccoli">
+      <input type="text" name="url-input" class="url-input input" placeholder="https://www.website.com">
+      <textarea rows="2" cols="50" name="desc-input" class="desc-input input">
       </textarea>
-      <select name="rating-input" form="js-bookmarks-form" class="rating-input">
+      <select name="rating-input" form="js-bookmarks-form" class="rating-input input">
         <option value="1">One Star</option>
         <option value="2">Two Stars</option>
         <option value="3">Three Stars</option>
         <option value="4">Four Stars</option>
         <option value="5">Five Stars</option>
       </select>
-      <button type="submit">Add BookMark</button>
+      <button type="submit" id="button">Add BookMark</button>
     </form>
-    <div style="margin-top: 50px;">
+  </section>
+    <section style="margin-top: 50px;">
       <form id="rating-filter-form">
           <select name="rating-filter" form="rating-filter-form" class="rating-filter">
             <option value="1">One Star</option>
@@ -36,9 +39,9 @@
             <option value="4">Four Stars</option>
             <option value="5">Five Stars</option>
           </select>
-          <button type="submit">Filter</button>
+          <button type="submit" id="button">Filter</button>
       </form>
-    </div>
+    </section>
 
     <ul class="bookmarks-list js-bookmarks-list">
     </ul>

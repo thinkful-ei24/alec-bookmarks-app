@@ -1,18 +1,21 @@
 * {
   box-sizing: border-box;
+  font-family: 'Kosugi Maru', sans-serif;
+  background-color: #F6F6F6;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-}
 
-button, input[type="text"] {
+#button{
+  border-radius: 6px;
   padding: 5px;
+   text-decoration: none;
+   background-color: #ADD8E6;
+   color: white;
+   border: none;
+   font-weight: 300;
 }
 
-button:hover {
-  cursor: pointer;
-}
+
 
 .hidden {
   display: none;
@@ -46,10 +49,50 @@ button:hover {
   margin-bottom: 15px;
 }
 
-.shopping-item__checked {
-  text-decoration: line-through;
-}
 
 .error-container {
   color: red;
+}
+.js-booksmarks-form{
+  background-color: white;
+}
+
+.form-wrapper{
+  padding: 15px;
+  margin: 50px auto;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+.description{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+li.js-item-element{
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+  border: lightgrey;
+  border-radius: 10px;
+}
+
+.input{
+  box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ outline: none;
+ display: block;
+ width: 100%;
+ padding: 7px;
+ border: none;
+ border-bottom: 1px solid #ddd;
+ background: transparent;
+ margin-bottom: 10px;
+ height: 45px;
+}
+
+.top-wrapper{
+  margin: auto;
+  text-align: center
 }
