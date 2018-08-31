@@ -11,7 +11,7 @@ form{
 .page-title{
   text-align: center;
 }
-.page-title-1{
+.page-title-1, .description{
   text-align: center;
   background-color:white;
 }
