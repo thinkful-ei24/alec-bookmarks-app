@@ -4,18 +4,43 @@
   background-color: #F6F6F6;
 }
 
-
+.page-title{
+  text-align: center;
+}
 #button{
-  border-radius: 6px;
+  padding: 2px;
+  border: 1px solid #ADD8E6;
+  text-decoration: none;
+  background-color: #ADD8E6;
+  color: white;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+#button2{
+  border-radius: 10px;
   padding: 5px;
-   text-decoration: none;
-   background-color: #ADD8E6;
-   color: white;
-   border: none;
-   font-weight: 300;
+  text-decoration: none;
+  background-color: #ADD8E6;
+  color: white;
+  border: none;
+  font-weight: 300;
+  font-size: 14px;
+  border: 3px solid #ADD8E6
+}
+#button2:hover{
+  background: transparent;
+  color: #ADD8E6;
 }
 
 
+#button:hover{
+  color: #ADD8E6;
+  background-color: white;
+}
+.link{
+  font-size: 12px;
+}
 
 .hidden {
   display: none;
@@ -28,6 +53,7 @@
 .container {
   max-width: 600px;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 
 .bookmarks-list {
@@ -75,6 +101,10 @@ li.js-item-element{
   -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
   border: lightgrey;
   border-radius: 10px;
+}
+label{
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .input{

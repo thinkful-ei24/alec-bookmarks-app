@@ -27,7 +27,7 @@ const bookMarkList = (function(){
       itemExpanded += `
         <div>
         <p class="description">${item.desc}</p>
-        <a href="${item.url}">Visit</a>
+        <a href="${item.url}" class="link">Visit</a>
         <button id="button" class="shopping-item-delete js-item-delete">
         delete
         </button>
@@ -167,17 +167,6 @@ const bookMarkList = (function(){
   //   $('#error-message-display').html(message.responseJSON.message);
   // }
 
-  function handleEditShoppingItemSubmit() {
-    $('.js-shopping-list').on('submit', '.js-edit-item', event => {
-      event.preventDefault();
-      const id = getItemIdFromElement(event.currentTarget);
-      const itemName = $(event.currentTarget).find('.shopping-item').val();
-      Api.updateItem(id, {name: itemName}, () => {
-        store.findAndUpdate(id, {name: itemName});
-        render();
-      }, errorCallback);
-    });
-  }
 
   function handleToggleFilterClick() {
     $('.js-filter-checked').click(() => {
@@ -198,7 +187,6 @@ const bookMarkList = (function(){
     handleNewItemSubmit();
     handleItemExpandClicked();
     handleDeleteItemClicked();
-    handleEditShoppingItemSubmit();
     handleToggleFilterClick();
     handleRatingFilterForm();
     handleCloseError();

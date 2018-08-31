@@ -11,15 +11,19 @@
 
 <body>
   <div class="container">
-    <h1>Bookmarks</h1>
+    <h1 class="page-title">Bookmarks</h1>
     <div class="error-container"></div>
     <section class="form-wrapper">
-      <h3>Add</h3>
+      <h3 class="page-title">Add</h3>
     <form id="js-bookmarks-form">
+       <label for="title-input">Title</label>
       <input type="text" name="title-input" class="title-input input" placeholder="e.g., broccoli">
+       <label for="url-input">URL</label>
       <input type="text" name="url-input" class="url-input input" placeholder="https://www.website.com">
+      <label for="desc-input">Description</label>
       <textarea rows="2" cols="50" name="desc-input" class="desc-input input">
       </textarea>
+        <label for="rating-input">Rating</label>
       <select name="rating-input" form="js-bookmarks-form" class="rating-input input">
         <option value="1">One Star</option>
         <option value="2">Two Stars</option>
@@ -27,7 +31,7 @@
         <option value="4">Four Stars</option>
         <option value="5">Five Stars</option>
       </select>
-      <button type="submit" id="button">Add BookMark</button>
+      <button type="submit" id="button2">Add Bookmark</button>
     </form>
   </section>
     <section style="margin-top: 50px;">
